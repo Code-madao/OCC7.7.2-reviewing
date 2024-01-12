@@ -357,6 +357,7 @@ public: //! @name public methods
     const Standard_Integer aRange = theEnd - theBegin;
     if (isForceSingleThreadExecution || aRange == 1)
     {
+      //no parallel
       for (Standard_Integer it (theBegin); it != theEnd; ++it)
         theFunctor(it);
     }

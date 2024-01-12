@@ -355,6 +355,7 @@ static Standard_Boolean isTreatAnalityc(const BRepAdaptor_Surface& theBAS1,
 //function : Perform
 //purpose  : intersect surfaces of the faces
 //=======================================================================
+//ATTENTION: real face-face intersection here
 void IntTools_FaceFace::Perform (const TopoDS_Face& aF1,
                                  const TopoDS_Face& aF2,
                                  const Standard_Boolean theToRunParallel)
@@ -374,34 +375,33 @@ void IntTools_FaceFace::Perform (const TopoDS_Face& aF1,
   const BRepAdaptor_Surface& aBAS2 = myContext->SurfaceAdaptor(myFace2);
   GeomAbs_SurfaceType aType1=aBAS1.GetType();
   GeomAbs_SurfaceType aType2=aBAS2.GetType();
+  //MARK:
+        const Standard_Boolean bReverse=SortTypes(aType1, aType2);
+        if (bReverse)
+        {
+          myFace1=aF2;
+          myFace2=aF1;
+          aType1=aBAS2.GetType();
+          aType2=aBAS1.GetType();
 
-  const Standard_Boolean bReverse=SortTypes(aType1, aType2);
-  if (bReverse)
-  {
-    myFace1=aF2;
-    myFace2=aF1;
-    aType1=aBAS2.GetType();
-    aType2=aBAS1.GetType();
-
-    if (myListOfPnts.Extent())
-    {
-      Standard_Real aU1,aV1,aU2,aV2;
-      IntSurf_ListIteratorOfListOfPntOn2S aItP2S;
-      //
-      aItP2S.Initialize(myListOfPnts);
-      for (; aItP2S.More(); aItP2S.Next())
-      {
-        IntSurf_PntOn2S& aP2S=aItP2S.Value();
-        aP2S.Parameters(aU1,aV1,aU2,aV2);
-        aP2S.SetValue(aU2,aV2,aU1,aV1);
-      }
-    }
-    //
-    Standard_Boolean anAproxTmp = myApprox1;
-    myApprox1 = myApprox2;
-    myApprox2 = anAproxTmp;
-  }
-
+          if (myListOfPnts.Extent())
+          {
+            Standard_Real aU1,aV1,aU2,aV2;
+            IntSurf_ListIteratorOfListOfPntOn2S aItP2S;
+            //
+            aItP2S.Initialize(myListOfPnts);
+            for (; aItP2S.More(); aItP2S.Next())
+            {
+              IntSurf_PntOn2S& aP2S=aItP2S.Value();
+              aP2S.Parameters(aU1,aV1,aU2,aV2);
+              aP2S.SetValue(aU2,aV2,aU1,aV1);
+            }
+          }
+          //
+          Standard_Boolean anAproxTmp = myApprox1;
+          myApprox1 = myApprox2;
+          myApprox2 = anAproxTmp;
+        }
 
   const Handle(Geom_Surface) S1=BRep_Tool::Surface(myFace1);
   const Handle(Geom_Surface) S2=BRep_Tool::Surface(myFace2);
@@ -496,7 +496,6 @@ void IntTools_FaceFace::Perform (const TopoDS_Face& aF1,
   const Handle(IntTools_TopolTool) dom2 = new IntTools_TopolTool(myHS2);
 
   myLConstruct.Load(dom1, dom2, myHS1, myHS2);
-  
 
   Tolerances(myHS1, myHS2, TolTang);
 

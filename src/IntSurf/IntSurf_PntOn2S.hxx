@@ -26,10 +26,8 @@
 class gp_Pnt2d;
 
 
-//! This class defines the geometric information
-//! for an intersection point between 2 surfaces :
-//! The coordinates ( Pnt from gp ), and two
-//! parametric coordinates.
+//! This class defines the geometric information for an intersection point
+//! between 2 surfaces: The coordinates (Pnt from gp), and two parametric coordinates.
 class IntSurf_PntOn2S 
 {
 public:
@@ -83,18 +81,9 @@ public:
   //! If theTol2D < 0.0 we will compare 3D-points only.
   Standard_EXPORT Standard_Boolean IsSame (const IntSurf_PntOn2S& theOtherPoint, const Standard_Real theTol3D = 0.0, const Standard_Real theTol2D = -1.0) const;
 
-
-
-
 protected:
 
-
-
-
-
 private:
-
-
 
   gp_Pnt pt;
   Standard_Real u1;
@@ -102,14 +91,8 @@ private:
   Standard_Real u2;
   Standard_Real v2;
 
-
 };
 
-
 #include <IntSurf_PntOn2S.lxx>
-
-
-
-
 
 #endif // _IntSurf_PntOn2S_HeaderFile

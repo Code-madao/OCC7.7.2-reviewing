@@ -80,7 +80,6 @@
 static Standard_Real ToleranceFF(const BRepAdaptor_Surface& aBAS1,
                                  const BRepAdaptor_Surface& aBAS2);
 
-/////////////////////////////////////////////////////////////////////////
 //=======================================================================
 //class    : BOPAlgo_FaceFace
 //purpose  : 
@@ -146,8 +145,9 @@ class BOPAlgo_FaceFace :
   }
   //
   const gp_Trsf& Trsf() const { return myTrsf; }
-  //
-  virtual void Perform() {
+
+  virtual void Perform()
+  {
     Message_ProgressScope aPS(myProgressRange, NULL, 1);
     if (UserBreak(aPS))
     {
@@ -265,19 +265,18 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
     // no intersection pairs found
     return;
   }
-
+  
   Message_ProgressScope aPSOuter(theRange, NULL, 1);
-
+  
   BOPDS_VectorOfInterfFF& aFFs = myDS->InterfFF();
   aFFs.SetIncrement(iSize);
-  //
-  // Options for the intersection algorithm
-  Standard_Boolean bApprox   = mySectionAttribute.Approximation(),
-                   bCompC2D1 = mySectionAttribute.PCurveOnS1(),
-                   bCompC2D2 = mySectionAttribute.PCurveOnS2();
-  Standard_Real    anApproxTol = 1.e-7;
-  // Post-processing options
-  Standard_Boolean bSplitCurve = Standard_False;
+  //MARK: Options for the section algorithm
+        Standard_Boolean bApprox   = mySectionAttribute.Approximation(),
+                        bCompC2D1 = mySectionAttribute.PCurveOnS1(),
+                        bCompC2D2 = mySectionAttribute.PCurveOnS2();
+        Standard_Real    anApproxTol = 1.e-7;
+        // Post-processing options
+        Standard_Boolean bSplitCurve = Standard_False;
   //
   // Collect all pairs of Edge/Edge interferences to check if
   // some faces have to be moved to obtain more precise intersection
@@ -311,7 +310,8 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
   // Prepare the pairs of faces for intersection
   BOPAlgo_VectorOfFaceFace aVFaceFace;
   myIterator->Initialize(TopAbs_FACE, TopAbs_FACE);
-  for (; myIterator->More(); myIterator->Next()) {
+  for (; myIterator->More(); myIterator->Next())
+  {
     if (UserBreak(aPSOuter))
     {
       return;
@@ -348,9 +348,9 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
       // Keep shift value to use it as the tolerance for intersection curves
       Standard_Real aShiftValue = 0.;
 
-      if (aBAS1.GetType() != GeomAbs_Plane ||
-        aBAS2.GetType() != GeomAbs_Plane) {
-
+      // MARK: This if is not included in XPlanarBool
+      if (aBAS1.GetType() != GeomAbs_Plane || aBAS2.GetType() != GeomAbs_Plane)
+      {
         Standard_Boolean isFound = Standard_False;
         for (TopExp_Explorer aExp1(aF1, TopAbs_EDGE); !isFound && aExp1.More(); aExp1.Next())
         {
@@ -418,15 +418,15 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
       // Note: in case of faces with closed edges it should not be less than value of the shift
       Standard_Real aTolFF = Max(aShiftValue, ToleranceFF(aBAS1, aBAS2));
       aFaceFace.SetTolFF(aTolFF);
-      //
-      IntSurf_ListOfPntOn2S aListOfPnts;
-      GetEFPnts(nF1, nF2, aListOfPnts);
-      Standard_Integer aNbLP = aListOfPnts.Extent();
-      if (aNbLP) {
-        aFaceFace.SetList(aListOfPnts);
-      }
-      //
-      aFaceFace.SetParameters(bApprox, bCompC2D1, bCompC2D2, anApproxTol);
+      //MARK: this part is not included in XPlanerBool
+            IntSurf_ListOfPntOn2S aListOfPnts;
+            GetEFPnts(nF1, nF2, aListOfPnts);
+            Standard_Integer aNbLP = aListOfPnts.Extent();
+            if (aNbLP) {
+              aFaceFace.SetList(aListOfPnts);
+            }
+            //
+            aFaceFace.SetParameters(bApprox, bCompC2D1, bCompC2D2, anApproxTol);
       aFaceFace.SetFuzzyValue(myFuzzyValue);
     }
     else {
@@ -446,23 +446,26 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
     aFaceFace.SetProgressRange(aPS.Next());
   }
   //======================================================
-  // Perform intersection
+
+  // && Perform intersection &&
   BOPTools_Parallel::Perform (myRunParallel, aVFaceFace);
+
   if (UserBreak(aPSOuter))
   {
     return;
   }
   //======================================================
   // Treatment of the results
-
-  for (k = 0; k < aNbFaceFace; ++k) {
+  for (k = 0; k < aNbFaceFace; ++k)
+  {
     if (UserBreak(aPSOuter))
     {
       return;
     }
     BOPAlgo_FaceFace& aFaceFace = aVFaceFace(k);
     aFaceFace.Indices(nF1, nF2);
-    if (!aFaceFace.IsDone() || aFaceFace.HasErrors()) {
+    if (!aFaceFace.IsDone() || aFaceFace.HasErrors())
+    {
       BOPDS_InterfFF& aFF = aFFs.Appended();
       aFF.SetIndices(nF1, nF2);
       aFF.Init(0, 0);
@@ -473,16 +476,18 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
     //
     Standard_Boolean bTangentFaces = aFaceFace.TangentFaces();
     Standard_Real aTolFF = aFaceFace.TolFF();
-    //
-    aFaceFace.PrepareLines3D(bSplitCurve);
-    //
-    aFaceFace.ApplyTrsf();
-    //
+    //MARK:
+          aFaceFace.PrepareLines3D(bSplitCurve);
+          //
+          aFaceFace.ApplyTrsf();
+
+    //return curves as result of intersection
     const IntTools_SequenceOfCurves& aCvsX = aFaceFace.Lines();
-    const IntTools_SequenceOfPntOn2Faces& aPntsX = aFaceFace.Points();
-    //
     Standard_Integer aNbCurves = aCvsX.Length();
-    Standard_Integer aNbPoints = aPntsX.Length();
+    //MARK:
+          //return points as result of intersection
+          const IntTools_SequenceOfPntOn2Faces& aPntsX = aFaceFace.Points();
+          Standard_Integer aNbPoints = aPntsX.Length();
     //
     if (aNbCurves || aNbPoints) {
       myDS->AddInterf(nF1, nF2);
@@ -492,21 +497,21 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
     aFF.SetIndices(nF1, nF2);
     aFF.SetTangentFaces(bTangentFaces);
     aFF.Init(aNbCurves, aNbPoints);
-    //
+    
     // Curves
-    // Fix bounding box expanding coefficient.
-    Standard_Real aBoxExpandValue = aTolFF;
+    Standard_Real aBoxExpandValue = aTolFF;//Fix bounding box expanding coefficient.
     if (aNbCurves > 0)
     {
       // Modify geometric expanding coefficient by topology value,
       // since this bounding box used in sharing (vertex or edge).
       Standard_Real aMaxVertexTol = Max(BRep_Tool::MaxTolerance(aFaceFace.Face1(), TopAbs_VERTEX),
-        BRep_Tool::MaxTolerance(aFaceFace.Face2(), TopAbs_VERTEX));
+                                        BRep_Tool::MaxTolerance(aFaceFace.Face2(), TopAbs_VERTEX));
       aBoxExpandValue += aMaxVertexTol;
     }
     //
     BOPDS_VectorOfCurve& aVNC = aFF.ChangeCurves();
-    for (Standard_Integer i = 1; i <= aNbCurves; ++i) {
+    for (Standard_Integer i = 1; i <= aNbCurves; ++i) 
+    {
       if (UserBreak(aPSOuter))
       {
         return;
@@ -514,7 +519,8 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
       Bnd_Box aBox;
       const IntTools_Curve& aIC = aCvsX(i);
       Standard_Boolean bIsValid = IntTools_Tools::CheckCurve(aIC, aBox);
-      if (bIsValid) {
+      if (bIsValid) 
+      {
         BOPDS_Curve& aNC = aVNC.Appended();
         aNC.SetCurve(aIC);
         // make sure that the bounding box has the maximal gap
@@ -523,10 +529,11 @@ void BOPAlgo_PaveFiller::PerformFF(const Message_ProgressRange& theRange)
         aNC.SetTolerance(Max(aIC.Tolerance(), aTolFF));
       }
     }
-    //
+
     // Points
     BOPDS_VectorOfPoint& aVNP = aFF.ChangePoints();
-    for (Standard_Integer i = 1; i <= aNbPoints; ++i) {
+    for (Standard_Integer i = 1; i <= aNbPoints; ++i) 
+    {
       const IntTools_PntOn2Faces& aPi = aPntsX(i);
       const gp_Pnt& aP = aPi.P1().Pnt();
       //
@@ -2310,6 +2317,7 @@ Standard_Boolean BOPAlgo_PaveFiller::ExtendedTolerance
 //function : GetEFPnts
 //purpose  : 
 //=======================================================================
+//???: what's EFPnts. maybe perform EF intersection here
 void BOPAlgo_PaveFiller::GetEFPnts
   (const Standard_Integer nF1,
    const Standard_Integer nF2,
