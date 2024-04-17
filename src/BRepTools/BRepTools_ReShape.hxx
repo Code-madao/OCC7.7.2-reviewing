@@ -35,11 +35,9 @@ class TopoDS_Vertex;
 class BRepTools_ReShape;
 DEFINE_STANDARD_HANDLE(BRepTools_ReShape, Standard_Transient)
 
-//! Rebuilds a Shape by making pre-defined substitutions on some
-//! of its components
+//! Rebuilds a Shape by making pre-defined substitutions on some of its components
 //!
-//! In a first phase, it records requests to replace or remove
-//! some individual shapes
+//! In a first phase, it records requests to replace or remove some individual shapes
 //! For each shape, the last given request is recorded
 //! Requests may be applied "Oriented" (i.e. only to an item with
 //! the SAME orientation) or not (the orientation of replacing
