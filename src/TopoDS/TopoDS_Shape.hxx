@@ -31,9 +31,9 @@
 //! to be given a location and an orientation
 //! - has a location for the underlying shape, giving its
 //! placement in the local coordinate system
-//! - has an orientation for the underlying shape, in
-//! terms of its geometry (as opposed to orientation in
-//! relation to other shapes).
+//! - has an orientation for the underlying shape, in terms of its
+//! geometry (as opposed to orientation in relation to other shapes).
+//!
 //! Note: A Shape is empty if it references an underlying
 //! shape which has an empty list of shapes.
 class TopoDS_Shape 
@@ -74,7 +74,7 @@ public:
   //! Destroys the reference to the underlying shape
   //! stored in this shape. As a result, this shape becomes null.
   void Nullify() 
-  { 
+  {
     myTShape.Nullify(); 
     myLocation.Clear();
     myOrient = TopAbs_EXTERNAL;
@@ -306,7 +306,6 @@ public:
   Standard_EXPORT void DumpJson (Standard_OStream& theOStream, Standard_Integer theDepth = -1) const;
 
 private:
-
   Handle(TopoDS_TShape) myTShape;
   TopLoc_Location myLocation;
   TopAbs_Orientation myOrient;

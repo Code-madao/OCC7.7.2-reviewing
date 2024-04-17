@@ -36,33 +36,15 @@ class TopoDS_Edge  : public TopoDS_Shape
 public:
 
   DEFINE_STANDARD_ALLOC
-
   
   //! Undefined Edge.
     TopoDS_Edge();
-
-
-
-
 protected:
-
-
-
-
 
 private:
 
-
-
-
-
 };
 
-
 #include <TopoDS_Edge.lxx>
-
-
-
-
 
 #endif // _TopoDS_Edge_HeaderFile

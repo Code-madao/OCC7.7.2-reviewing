@@ -305,8 +305,6 @@ Approximation(const Handle(TColStd_HArray1OfReal)& OneDTol,
    tabVKnots = Approx.Knots();
    tabVMults = Approx.Multiplicities();
 
-   
-
   // --> Filling of curves 2D  ----------
    if (Num2DSS>0) {
      gp_GTrsf2d TrsfInv;

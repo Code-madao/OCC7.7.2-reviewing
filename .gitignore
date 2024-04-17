@@ -1,12 +1,12 @@
 # my customization
 *.bat
 *.txt
-data/
-adm/
 dox/
+.tgitconfig
 genconf
 gendoc
 genproj
+!cmakelists.txt
 
 # standard directories for derived files in CASROOT
 /.adm

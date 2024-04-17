@@ -160,15 +160,8 @@ Standard_Boolean operator != (const TopLoc_Location& Other) const
 protected:
 
 
-
-
-
 private:
-
-
-
   TopLoc_SListOfItemLocation myItems;
-
 
 };
 

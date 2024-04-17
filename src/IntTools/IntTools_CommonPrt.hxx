@@ -143,19 +143,9 @@ IntTools_CommonPrt& operator = (const IntTools_CommonPrt& Other)
   //! Selector
   Standard_EXPORT void BoundingPoints (gp_Pnt& aP1, gp_Pnt& aP2) const;
 
-
-
-
 protected:
 
-
-
-
-
 private:
-
-
-
   TopoDS_Edge myEdge1;
   TopoDS_Edge myEdge2;
   TopAbs_ShapeEnum myType;
@@ -167,13 +157,6 @@ private:
   gp_Pnt myPnt1;
   gp_Pnt myPnt2;
 
-
 };
-
-
-
-
-
-
 
 #endif // _IntTools_CommonPrt_HeaderFile

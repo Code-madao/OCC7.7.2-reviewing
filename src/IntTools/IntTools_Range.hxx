@@ -60,29 +60,12 @@ public:
   //! Selector
   Standard_EXPORT void Range (Standard_Real& aFirst, Standard_Real& aLast) const;
 
-
-
-
 protected:
-
-
-
-
 
 private:
 
-
-
   Standard_Real myFirst;
   Standard_Real myLast;
-
-
 };
-
-
-
-
-
-
 
 #endif // _IntTools_Range_HeaderFile

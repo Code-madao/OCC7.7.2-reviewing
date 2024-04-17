@@ -38,18 +38,12 @@ class gp_Dir;
 
 DEFINE_STANDARD_HANDLE(BRepAdaptor_Surface, Adaptor3d_Surface)
 
-//! The Surface from BRepAdaptor allows to  use a Face
-//! of the BRep topology look like a 3D surface.
+//! The Surface from BRepAdaptor allows to use a Face of the BRep topology look like a 3D surface.
 //!
-//! It  has  the methods  of  the class   Surface from
-//! Adaptor3d.
+//! It has the methods of the class Surface from Adaptor3d.
+//! It is created or initialized with a Face. It takes into account the local coordinates system.
 //!
-//! It is created or initialized with a Face. It takes
-//! into account the local coordinates system.
-//!
-//! The  u,v parameter range is   the minmax value for
-//! the  restriction,  unless  the flag restriction is
-//! set to false.
+//! The u,v parameter range is the minmax value for the restriction, unless the flag restriction is set to false.
 class BRepAdaptor_Surface  : public Adaptor3d_Surface
 {
   DEFINE_STANDARD_RTTIEXT(BRepAdaptor_Surface, Adaptor3d_Surface)

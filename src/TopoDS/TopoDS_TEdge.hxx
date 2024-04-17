@@ -22,46 +22,26 @@
 #include <TopoDS_TShape.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 
-
 class TopoDS_TEdge;
 DEFINE_STANDARD_HANDLE(TopoDS_TEdge, TopoDS_TShape)
 
-//! A topological part  of a  curve  in 2D or 3D,  the
-//! boundary    is   a   set  of oriented    Vertices.
+//! A topological part of a curve in 2D or 3D, the boundary is a set of oriented Vertices.
 class TopoDS_TEdge : public TopoDS_TShape
 {
 
 public:
-
-  
   //! Returns  EDGE.
   Standard_EXPORT TopAbs_ShapeEnum ShapeType() const Standard_OVERRIDE;
 
-
-
-
-  DEFINE_STANDARD_RTTIEXT(TopoDS_TEdge,TopoDS_TShape)
+  DEFINE_STANDARD_RTTIEXT(TopoDS_TEdge, TopoDS_TShape)
 
 protected:
-
-  
   //! Construct an edge.
-    TopoDS_TEdge();
-
-
+  TopoDS_TEdge();
 
 private:
-
-
-
-
 };
 
-
 #include <TopoDS_TEdge.lxx>
-
-
-
-
 
 #endif // _TopoDS_TEdge_HeaderFile

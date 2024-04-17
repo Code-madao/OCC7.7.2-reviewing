@@ -32,7 +32,6 @@ class TopLoc_SListNodeOfItemLocation : public Standard_Transient
 {
 
 public:
-
   
     TopLoc_SListNodeOfItemLocation(const TopLoc_ItemLocation& I, const TopLoc_SListOfItemLocation& aTail);
   
@@ -40,19 +39,11 @@ public:
   
     TopLoc_ItemLocation& Value() const;
 
-
-
-
   DEFINE_STANDARD_RTTIEXT(TopLoc_SListNodeOfItemLocation,Standard_Transient)
 
 protected:
 
-
-
-
 private:
-
-
   TopLoc_SListOfItemLocation myTail;
   TopLoc_ItemLocation myValue;
 

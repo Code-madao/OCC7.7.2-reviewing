@@ -198,6 +198,7 @@ void BRepAlgoAPI_BooleanOperation::Build(const Message_ProgressRange& theRange)
 
     // Perform intersection
     IntersectShapes(aLArgs, aPS.Next(70));
+    
     if (HasErrors())
     {
       if (aDumpOper.IsDump())
@@ -225,11 +226,11 @@ void BRepAlgoAPI_BooleanOperation::Build(const Message_ProgressRange& theRange)
 
   // Build the result
   BuildResult(aPS.Next(30));
+
   if (HasErrors())
   {
     return;
   }
-
   if (aDumpOper.IsDump()) {
     Standard_Boolean isDumpRes = myShape.IsNull() ||
                                  !BRepAlgoAPI_Check(myShape).IsValid();

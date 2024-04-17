@@ -847,6 +847,7 @@ void IntTools_EdgeEdge::ComputeLineLine()
 
   Standard_Real anAngle = aD1.Angle (aD2);
   Standard_Boolean IsCoincide = anAngle < Precision::Angular();
+  //1. parallel situation
   if (IsCoincide)
   {
     if (aL1.SquareDistance (aL2.Location()) > aTol)
@@ -862,6 +863,7 @@ void IntTools_EdgeEdge::ComputeLineLine()
 
   if (!IsCoincide)
   {
+  //2. non-coplanar
     gp_Pnt O2 (aL2.Location());
     if (!Precision::IsInfinite (aT21) && !Precision::IsInfinite (aT22))
       O2 = ElCLib::Value ((aT21 + aT22) / 2., aL2);
@@ -882,7 +884,7 @@ void IntTools_EdgeEdge::ComputeLineLine()
   IntTools_CommonPrt aCommonPrt;
   aCommonPrt.SetEdge1 (myEdge1);
   aCommonPrt.SetEdge2 (myEdge2);
-
+  //3. colinear
   if (IsCoincide)
   {
     Standard_Real t21 = ElCLib::Parameter (aL2, aP11);
@@ -919,7 +921,7 @@ void IntTools_EdgeEdge::ComputeLineLine()
     return;
   }
 
-
+  //4. coplanar and intersect
   gp_Vec O1O2 (aL1.Location(), aL2.Location());
   gp_XYZ aCross = aD1.XYZ().Crossed (aD2.XYZ());
   Standard_Real aDistLL = O1O2.Dot (gp_Vec (aCross.Normalized()));
@@ -940,7 +942,7 @@ void IntTools_EdgeEdge::ComputeLineLine()
 
   Standard_Real aSqSin = aCross.SquareModulus();
   Standard_Real aT2 = (aD1.XYZ() * (O1O2.Dot (aD1)) - (O1O2.XYZ())).Dot (aD2.XYZ());
-  aT2 /= aSqSin;
+  aT2 /= aSqSin;//get para value of the intersecting Pnt in aL2
 
   if (aT2 < aT21 || aT2 > aT22)
     // out of range

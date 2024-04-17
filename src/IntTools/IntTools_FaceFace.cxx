@@ -422,7 +422,9 @@ void IntTools_FaceFace::Perform (const TopoDS_Face& aF1,
                                         aType2 == GeomAbs_Cone ||
                                         aType2 == GeomAbs_Torus);
 
-  if(aType1==GeomAbs_Plane && aType2==GeomAbs_Plane)  {
+  //planar intersection
+  if(aType1==GeomAbs_Plane && aType2==GeomAbs_Plane)
+  {
     Standard_Real umin, umax, vmin, vmax;
     //
     myContext->UVBounds(myFace1, umin, umax, vmin, vmax);
@@ -2214,7 +2216,6 @@ void  PerformPlanes(const Handle(GeomAdaptor_Surface)& theS1,
                     IntTools_SequenceOfCurves& theSeqOfCurve,
                     Standard_Boolean& theTangentFaces)
 {
-
   gp_Pln aPln1 = theS1->Plane();
   gp_Pln aPln2 = theS2->Plane();
 
