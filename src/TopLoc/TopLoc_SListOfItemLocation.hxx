@@ -22,6 +22,7 @@
 #include <Standard_Handle.hxx>
 
 #include <Standard_Macro.hxx>
+
 class TopLoc_SListNodeOfItemLocation;
 class TopLoc_ItemLocation;
 
@@ -32,11 +33,9 @@ class TopLoc_ItemLocation;
 //! . Or it has a Value and a  Tail  which is an other SListOfItemLocation.
 //!
 //! The Tail of an empty list is an empty list.
-//! SListOfItemLocation are  shared.  It  means   that they  can  be
-//! modified through other lists.
-//! SListOfItemLocation may  be used  as Iterators. They  have Next,
-//! More, and value methods. To iterate on the content
-//! of the list S just do.
+//! SListOfItemLocation are shared. It means that they can be modified through other lists.
+//! SListOfItemLocation may be used as Iterators. They have Next,
+//! More, and value methods. To iterate on the content of the list S just do.
 //!
 //! SListOfItemLocation Iterator;
 //! for (Iterator = S; Iterator.More(); Iterator.Next())
@@ -54,10 +53,7 @@ public:
   Standard_EXPORT TopLoc_SListOfItemLocation(const TopLoc_ItemLocation& anItem, const TopLoc_SListOfItemLocation& aTail);
   
   //! Creates a list from an other one. The lists  are shared.
-  TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation& Other)
-  : myNode(Other.myNode)
-  {
-  }
+  TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation& Other): myNode(Other.myNode){}
   
   //! Sets  a list  from  an  other  one. The  lists are
   //! shared. The list itself is returned.
@@ -70,10 +66,7 @@ public:
   }
   
   //! Move constructor
-  TopLoc_SListOfItemLocation (TopLoc_SListOfItemLocation&& theOther) Standard_Noexcept
-    : myNode(std::move (theOther.myNode))
-  {
-  }
+  TopLoc_SListOfItemLocation (TopLoc_SListOfItemLocation&& theOther) Standard_Noexcept : myNode(std::move (theOther.myNode)){}
 
   //! Move operator
   TopLoc_SListOfItemLocation& operator= (TopLoc_SListOfItemLocation&& theOther) Standard_Noexcept

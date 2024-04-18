@@ -27,7 +27,7 @@
 class TopLoc_Datum3D;
 DEFINE_STANDARD_HANDLE(TopLoc_Datum3D, Standard_Transient)
 
-//! Describes a coordinate transformation, i.e. a change
+//MARK: Describes a coordinate transformation, i.e. a change
 //! to an elementary 3D coordinate system, or position in 3D space.
 //! A Datum3D is always described relative to the default datum.
 //! The default datum is described relative to itself: its

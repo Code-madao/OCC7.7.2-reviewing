@@ -33,8 +33,7 @@ class Poly_PolygonOnTriangulation;
 class BRep_CurveRepresentation;
 DEFINE_STANDARD_HANDLE(BRep_CurveRepresentation, Standard_Transient)
 
-//! Root class for the curve representations. Contains
-//! a location.
+//! Root class for the curve representations. Contains a location.
 class BRep_CurveRepresentation : public Standard_Transient
 {
 
