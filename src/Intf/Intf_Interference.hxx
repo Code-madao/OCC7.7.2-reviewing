@@ -29,11 +29,8 @@ class Intf_SectionPoint;
 class Intf_SectionLine;
 class Intf_TangentZone;
 
-
-//! Describes the   Interference  computation    result
-//! between polygon2d or polygon3d or polyhedron
-//! (as  three sequences   of  points  of  intersection,
-//! polylines of intersection and zones de tangence).
+//! Describes the Interference computation  result between polygon2d or polygon3d or polyhedron
+//! (as three sequences of points of intersection, polylines of intersection and zones de tangence).
 class Intf_Interference 
 {
 public:

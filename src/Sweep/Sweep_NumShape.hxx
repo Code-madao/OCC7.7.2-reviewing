@@ -26,8 +26,7 @@
 #include <TopAbs_Orientation.hxx>
 
 
-//! Gives    a  simple  indexed   representation  of a
-//! Directing Edge topology.
+//! Gives a simple indexed representation of a Directing Edge topology.
 class Sweep_NumShape 
 {
 public:

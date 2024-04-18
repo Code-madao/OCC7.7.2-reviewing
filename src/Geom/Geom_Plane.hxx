@@ -37,7 +37,7 @@ class Geom_Plane;
 DEFINE_STANDARD_HANDLE(Geom_Plane, Geom_ElementarySurface)
 
 //! Describes a plane in 3D space.
-//! A plane is positioned in space by a coordinate system
+//MARK: A plane is positioned in space by a coordinate system
 //! (a gp_Ax3 object) such that the plane is defined by
 //! the origin, "X Direction" and "Y Direction" of this
 //! coordinate system.

@@ -31,8 +31,7 @@ class IGESData_TransfEntity;
 class IGESAppli_Node;
 DEFINE_STANDARD_HANDLE(IGESAppli_Node, IGESData_IGESEntity)
 
-//! defines Node, Type <134> Form <0>
-//! in package IGESAppli
+//! defines Node, Type <134> Form <0> in package IGESAppli
 //! Geometric point used in the definition of a finite element.
 class IGESAppli_Node : public IGESData_IGESEntity
 {

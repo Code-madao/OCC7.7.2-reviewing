@@ -26,8 +26,7 @@ class IFSelect_SessionPilot;
 class XSControl_Vars;
 
 
-//! This package provides complements to IFSelect & Co for
-//! control of a session
+//! This package provides complements to IFSelect & Co for control of a session
 class XSControl 
 {
 public:

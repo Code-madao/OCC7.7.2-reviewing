@@ -19,8 +19,7 @@
 
 #include <Select3D_SensitiveSet.hxx>
 
-//! A framework to define selection of a wire owner by an
-//! elastic wire band.
+//! A framework to define selection of a wire owner by an elastic wire band.
 class Select3D_SensitiveWire : public Select3D_SensitiveSet
 {
 public:

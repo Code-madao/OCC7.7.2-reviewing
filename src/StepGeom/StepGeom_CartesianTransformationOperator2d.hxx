@@ -22,7 +22,6 @@
 
 #include <StepGeom_CartesianTransformationOperator.hxx>
 
-
 class StepGeom_CartesianTransformationOperator2d;
 DEFINE_STANDARD_HANDLE(StepGeom_CartesianTransformationOperator2d, StepGeom_CartesianTransformationOperator)
 
@@ -31,31 +30,12 @@ class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTran
 {
 
 public:
-
-  
   Standard_EXPORT StepGeom_CartesianTransformationOperator2d();
 
-
-
-
-  DEFINE_STANDARD_RTTIEXT(StepGeom_CartesianTransformationOperator2d,StepGeom_CartesianTransformationOperator)
+  DEFINE_STANDARD_RTTIEXT(StepGeom_CartesianTransformationOperator2d, StepGeom_CartesianTransformationOperator)
 
 protected:
-
-
-
-
 private:
-
-
-
-
 };
-
-
-
-
-
-
 
 #endif // _StepGeom_CartesianTransformationOperator2d_HeaderFile

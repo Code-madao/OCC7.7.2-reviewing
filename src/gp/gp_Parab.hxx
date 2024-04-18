@@ -54,9 +54,7 @@ public:
   DEFINE_STANDARD_ALLOC
 
   //! Creates an indefinite Parabola.
-  gp_Parab()
-  : focalLength (RealLast())
-  {}
+  gp_Parab(): focalLength (RealLast()){}
 
   //! Creates a parabola with its local coordinate system "theA2"
   //! and it's focal length "Focal".
@@ -215,10 +213,8 @@ public:
   }
 
 private:
-
   gp_Ax2 pos;
   Standard_Real focalLength;
-
 };
 
 //=======================================================================

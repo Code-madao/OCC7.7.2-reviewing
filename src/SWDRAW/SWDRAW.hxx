@@ -28,8 +28,7 @@
 //! Provides DRAW interface to the functionalities of Shape Healing
 //! toolkit (SHAPEWORKS Delivery Unit).
 //!
-//! Classes prefixed with Shape* corresponds to the packages of
-//! Shape Healing.
+//! Classes prefixed with Shape* corresponds to the packages of Shape Healing.
 class SWDRAW 
 {
 public:

@@ -21,7 +21,6 @@
 
 #include <Standard_Transient.hxx>
 
-
 class XSAlgo_ToolContainer;
 DEFINE_STANDARD_HANDLE(XSAlgo_ToolContainer, Standard_Transient)
 
@@ -30,32 +29,13 @@ class XSAlgo_ToolContainer : public Standard_Transient
 {
 
 public:
-
-  
   //! Empty constructor
   Standard_EXPORT XSAlgo_ToolContainer();
 
-
-
-
-  DEFINE_STANDARD_RTTIEXT(XSAlgo_ToolContainer,Standard_Transient)
+  DEFINE_STANDARD_RTTIEXT(XSAlgo_ToolContainer, Standard_Transient)
 
 protected:
-
-
-
-
 private:
-
-
-
-
 };
-
-
-
-
-
-
 
 #endif // _XSAlgo_ToolContainer_HeaderFile

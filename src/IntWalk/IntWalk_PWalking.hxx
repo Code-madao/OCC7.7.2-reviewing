@@ -30,8 +30,7 @@ class gp_Pnt;
 
 //! This class implements an algorithm to determine the
 //! intersection between 2 parametrized surfaces, marching from
-//! a starting point. The intersection line
-//! starts and ends on the natural surface's  boundaries .
+//! a starting point. The intersection line starts and ends on the natural surface's boundaries .
 class IntWalk_PWalking 
 {
 public:

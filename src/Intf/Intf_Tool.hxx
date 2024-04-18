@@ -31,8 +31,7 @@ class gp_Hypr;
 class gp_Parab;
 
 
-//! Provides services to create box for infinites
-//! lines in a given contexte.
+//! Provides services to create box for infinites lines in a given contexte.
 class Intf_Tool 
 {
 public:

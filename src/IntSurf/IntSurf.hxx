@@ -23,9 +23,7 @@ class IntSurf_Transition;
 class gp_Dir;
 class gp_Vec;
 
-//! This package provides resources for
-//! all the packages concerning the intersection
-//! between surfaces.
+//! This package provides resources for all the packages concerning the intersection between surfaces.
 class IntSurf 
 {
 public:

@@ -34,8 +34,7 @@ class MAT_Node;
 class MAT_Graph;
 DEFINE_STANDARD_HANDLE(MAT_Graph, Standard_Transient)
 
-//! The Class Graph permits the exploration of the
-//! Bisector Locus.
+//! The Class Graph permits the exploration of the Bisector Locus.
 class MAT_Graph : public Standard_Transient
 {
 

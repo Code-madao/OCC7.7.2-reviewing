@@ -25,8 +25,7 @@
 class Intrv_Interval;
 
 
-//! The class  Intervals is a  sorted  sequence of non
-//! overlapping  Real Intervals.
+//! The class Intervals is a sorted sequence of non-overlapping Real Intervals.
 class Intrv_Intervals 
 {
 public:
