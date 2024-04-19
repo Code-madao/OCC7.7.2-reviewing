@@ -21,10 +21,8 @@
 class Express_Schema;
 class TCollection_AsciiString;
 
-//! Provides data structures for representation of EXPRESS schema
-//! (items, types, entities etc.)
-//! and tools for generating XSTEP classes (HXX and CXX) from
-//! items of the schema
+//! Provides data structures for representation of EXPRESS schema (items, types, entities etc.)
+//! and tools for generating XSTEP classes (HXX and CXX) from items of the schema
 class Express
 {
 public:

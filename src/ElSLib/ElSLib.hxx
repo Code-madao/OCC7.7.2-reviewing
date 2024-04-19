@@ -35,8 +35,7 @@ class gp_Lin;
 class gp_Circ;
 
 
-//! Provides functions for basic geometric computation on
-//! elementary surfaces.
+//! Provides functions for basic geometric computation on elementary surfaces.
 //! This includes:
 //! -   calculation of a point or derived vector on a surface
 //! where the surface is provided by the gp package, or
