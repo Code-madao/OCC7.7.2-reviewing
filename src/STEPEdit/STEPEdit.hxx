@@ -27,8 +27,7 @@ class IFSelect_Signature;
 class IFSelect_SelectSignature;
 
 
-//! Provides tools to exploit and edit a set of STEP data :
-//! editors, selections ..
+//! Provides tools to exploit and edit a set of STEP data : editors, selections ..
 class STEPEdit 
 {
 public:

@@ -27,8 +27,7 @@ class XSAlgo
 public:
   DEFINE_STANDARD_ALLOC
 
-  //! Provides initerface to the algorithms from Shape Healing
-  //! and others for XSTEP processors.
+  //! Provides initerface to the algorithms from Shape Healing and others for XSTEP processors.
   //! Creates and initializes default AlgoContainer.
   Standard_EXPORT static void Init();
 

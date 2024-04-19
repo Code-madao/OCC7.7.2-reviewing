@@ -28,8 +28,7 @@ class Plate_D2;
 class Plate_D3;
 
 
-//! define a G1, G2 or G3 constraint on the Plate using weaker
-//! constraint than GtoCConstraint
+//! define a G1, G2 or G3 constraint on the Plate using weaker constraint than GtoCConstraint
 class Plate_FreeGtoCConstraint 
 {
 public:

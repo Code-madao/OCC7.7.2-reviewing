@@ -31,11 +31,9 @@
 class math_Matrix;
 
 
-//! PLib means Polynomial  functions library.  This pk
-//! provides  basic       computation    functions for
+//! PLib means Polynomial functions library. This pk provides basic computation functions for
 //! polynomial functions.
-//! Note: weight arrays can be passed by pointer for
-//! some functions so that NULL pointer is valid.
+//! Note: weight arrays can be passed by pointer for some functions so that NULL pointer is valid.
 //! That means no weights passed.
 class PLib 
 {

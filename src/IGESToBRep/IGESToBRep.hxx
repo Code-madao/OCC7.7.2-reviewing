@@ -30,8 +30,7 @@ class TopoDS_Edge;
 class TopoDS_Face;
 
 
-//! Provides tools in order to transfer IGES entities
-//! to CAS.CADE.
+//! Provides tools in order to transfer IGES entities to CASCADE.
 class IGESToBRep 
 {
 public:

@@ -26,8 +26,7 @@
 #include <TDataStd_RealEnum.hxx>
 
 
-//! This  package  defines   standard attributes for
-//! modelling.
+//! This  package  defines standard attributes for modelling.
 //! These allow you to create and modify labels
 //! and attributes for many basic data types.
 //! Standard topological and visualization

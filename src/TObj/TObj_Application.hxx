@@ -23,10 +23,7 @@
 #include <Message_Gravity.hxx>
 #include <Message_Messenger.hxx>
 
-//!
-//! This is a base class for OCAF based TObj models
-//!  with declared virtual methods
-//!
+//! This is a base class for OCAF based TObj models with declared virtual methods
 class TObj_Application : public TDocStd_Application
 {
 public:

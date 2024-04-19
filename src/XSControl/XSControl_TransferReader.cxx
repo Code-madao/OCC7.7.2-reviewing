@@ -741,8 +741,7 @@ Standard_Boolean XSControl_TransferReader::BeginTransfer ()
   if (Actor().IsNull())  return Standard_False;
   myShapeResult.Nullify();
 
-  if (myTP.IsNull()) myTP = new Transfer_TransientProcess
-    (myModel->NbEntities());
+  if (myTP.IsNull()) myTP = new Transfer_TransientProcess(myModel->NbEntities());
 
   Handle(Transfer_ActorOfTransientProcess) actor;
   myTP->SetActor (actor);        // -> RAZ
